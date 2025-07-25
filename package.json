@@ -1,0 +1,36 @@
+
+echo { > package.json
+echo   "name": "netplus-internship", >> package.json
+echo   "version": "1.0.0", >> package.json
+echo   "private": true, >> package.json
+echo   "dependencies": { >> package.json
+echo     "react": "^18.2.0", >> package.json
+echo     "react-dom": "^18.2.0", >> package.json
+echo     "react-scripts": "5.0.1", >> package.json
+echo     "web-vitals": "^2.1.4" >> package.json
+echo   }, >> package.json
+echo   "scripts": { >> package.json
+echo     "start": "react-scripts start", >> package.json
+echo     "build": "react-scripts build", >> package.json
+echo     "test": "react-scripts test", >> package.json
+echo     "eject": "react-scripts eject" >> package.json
+echo   }, >> package.json
+echo   "eslintConfig": { >> package.json
+echo     "extends": [ >> package.json
+echo       "react-app", >> package.json
+echo       "react-app/jest" >> package.json
+echo     ] >> package.json
+echo   }, >> package.json
+echo   "browserslist": { >> package.json
+echo     "production": [ >> package.json
+echo       ">0.2%", >> package.json
+echo       "not dead", >> package.json
+echo       "not op_mini all" >> package.json
+echo     ], >> package.json
+echo     "development": [ >> package.json
+echo       "last 1 chrome version", >> package.json
+echo       "last 1 firefox version", >> package.json
+echo       "last 1 safari version" >> package.json
+echo     ] >> package.json
+echo   } >> package.json
+echo } >> package.json
