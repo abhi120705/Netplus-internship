@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
+import RegisterForm from './components/auth/RegisterForm';
+import LoginForm from './components/auth/LoginForm';
+import UserDetails from './components/user/UserDetails';
 
 function App() {
   const [activeTab, setActiveTab] = useState('register');
@@ -73,16 +76,7 @@ function App() {
 
       <main>
         {loggedInUser ? (
-          <div className="user-details">
-            <h2>Welcome, {loggedInUser.name}!</h2>
-            <p>Email: {loggedInUser.email}</p>
-            <p>Type: {loggedInUser.type}</p>
-            {loggedInUser.type === 'employee' && <p>Employee ID: {loggedInUser.employeeId}</p>}
-            {loggedInUser.type === 'customer' && <p>Customer ID: {loggedInUser.customerId}</p>}
-            <p>Phone: {loggedInUser.phone}</p>
-            <p>Address: {loggedInUser.address}</p>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
+          <UserDetails loggedInUser={loggedInUser} handleLogout={handleLogout} />
         ) : (
           <>
             <div className="tabs">
@@ -101,126 +95,19 @@ function App() {
             </div>
 
             {activeTab === 'register' ? (
-              <div className="form-container">
-                <h2>Register as {userType}</h2>
-                <div className="user-type-toggle">
-                  <button
-                    className={userType === 'employee' ? 'active' : ''}
-                    onClick={() => setUserType('employee')}
-                  >
-                    Employee
-                  </button>
-                  <button
-                    className={userType === 'customer' ? 'active' : ''}
-                    onClick={() => setUserType('customer')}
-                  >
-                    Customer
-                  </button>
-                </div>
-                <form onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <label>Name:</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Email:</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Password:</label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  {userType === 'employee' && (
-                    <div className="form-group">
-                      <label>Employee ID:</label>
-                      <input
-                        type="text"
-                        name="employeeId"
-                        value={formData.employeeId}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  )}
-                  {userType === 'customer' && (
-                    <div className="form-group">
-                      <label>Customer ID:</label>
-                      <input
-                        type="text"
-                        name="customerId"
-                        value={formData.customerId}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  )}
-                  <div className="form-group">
-                    <label>Phone:</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Address:</label>
-                    <textarea
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <button type="submit">Register</button>
-                </form>
-              </div>
+              <RegisterForm
+                userType={userType}
+                setUserType={setUserType}
+                formData={formData}
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
+              />
             ) : (
-              <div className="form-container">
-                <h2>Login</h2>
-                <form onSubmit={handleLogin}>
-                  <div className="form-group">
-                    <label>Email:</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={loginData.email}
-                      onChange={handleLoginChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Password:</label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={loginData.password}
-                      onChange={handleLoginChange}
-                      required
-                    />
-                  </div>
-                  <button type="submit">Login</button>
-                </form>
-              </div>
+              <LoginForm
+                loginData={loginData}
+                handleLoginChange={handleLoginChange}
+                handleLogin={handleLogin}
+              />
             )}
           </>
         )}
