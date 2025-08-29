@@ -624,7 +624,7 @@
     "react-error-overlay": "^6.1.0",
     "react-is": "^17.0.2",
     "react-refresh": "^0.11.0",
-    "react-scripts": "^0.0.0",
+    "react-scripts": "5.0.1",
     "read-cache": "^1.0.0",
     "readable-stream": "^3.6.2",
     "readdirp": "^3.6.0",
@@ -854,5 +854,17 @@
   "bugs": {
     "url": "https://github.com/abhi120705/Netplus-internship/issues"
   },
-  "homepage": "https://github.com/abhi120705/Netplus-internship#readme"
+  "homepage": "https://github.com/abhi120705/Netplus-internship#readme",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
